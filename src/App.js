@@ -51,30 +51,41 @@ export default function App() {
    /* ⚠️ ️Kodunuzu yukarıya yazın. Aşağıdaki kod değiştirilmemelidir ⚠️
     
     --------------------------------------------------------------------*/
-
-  let dataToUse, functionToUse
-
-  if (typeof characterData !== 'undefined') {
-    dataToUse = characterData
-  } else {
-    dataToUse = noCharacter.noData
-  }
-
-  if (typeof setCharacterData !== 'undefined') {
-    functionToUse = setCharacterData
-  } else {
-    functionToUse = noCharacter.noFunction
-  }
-
-  return (
-    <div className='wrapper'>
-      <StatusBars characterData={dataToUse} />
-
-      <Character characterData={dataToUse} />
-
-      <Options characterData={dataToUse} />
-
-      <Button setCharacterData={functionToUse} />
-    </div>
-  )
-}
+   
+      const [characterData, setCharacterData] = useState({
+        hat: true,
+        shield: false,
+        weapon: "sword",
+        name: namesList[0],
+        attackOptions: attackOptionsList.slice(0, 6),
+        stats: {
+          hp: 75,
+          mp: 50,
+          strength: 80,
+        },
+      });
+    
+      let dataToUse, functionToUse;
+    
+      if (typeof characterData !== 'undefined') {
+        dataToUse = characterData;
+      } else {
+        dataToUse = noCharacter.noData;
+      }
+    
+      if (typeof setCharacterData !== 'undefined') {
+        functionToUse = setCharacterData;
+      } else {
+        functionToUse = noCharacter.noFunction;
+      }
+    
+      return (
+        <div className='wrapper'>
+          <StatusBars characterData={dataToUse} />
+          <Character characterData={dataToUse} />
+          <Options characterData={dataToUse} />
+          <Button setCharacterData={functionToUse} />
+        </div>
+      );
+    }
+  
